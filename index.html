@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Kalti Brasil</title>
+
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="css/polos.css">
+  <link rel="stylesheet" href="css/camisetas.css">
+</head>
+
+<body>
+<header class="topo"> 
+  <div class="banner">
+    <img src="img/logo/banner-kalti-brasil.png" alt="logo" />
+  </div>
+</header>
+
+<!-- Cards Polos -->
+<h2 class="titulo-polos">Polos</h2>
+<section class="polos-container">
+  <button class="seta esquerda">&#10094;</button>
+  <div class="polos">
+    <!-- Cards serão inseridos pelo JS -->
+  </div>
+  <button class="seta direita">&#10095;</button>
+</section>
+
+<!-- Cards Camisetas -->
+<h2 class="titulo-camisetas">Camisetas</h2>
+<section class="camisetas-container">
+  <button class="seta esquerda">&#10094;</button>
+  <div class="camisetas">
+    <!-- Cards serão inseridos pelo JS -->
+  </div>
+  <button class="seta direita">&#10095;</button>
+</section>
+
+<!-- Informações da Loja -->
+<section class="titulo-info">
+  <h2>Informacoes</h2>
+</section>
+<section class="info-container">
+  <div class="info-card">
+    <h3>Entrega</h3>
+    <p>Prazo de envio de 3 a 5 dias úteis após o pedido.</p>
+  </div>
+  <div class="info-card">
+    <h3>Pagamento</h3>
+    <p>Pagamento via PIX com confirmação rápida.</p>
+  </div>
+  <div class="info-card">
+    <h3>Producao</h3>
+    <p>Todas as peças são feitas sob encomenda.</p>
+  </div>
+</section>
+
+<!-- Tabelas de Camisetas -->
+<section class="camisa-info">
+  <h2>Informacoes das Camisetas</h2>
+</section>
+
+<section class="info-container">
+  <!-- Preço por tamanho -->
+  <div class="info-card">
+    <h3>Preco por Tamanho</h3>
+    <table style="width:100%; text-align:center; border-collapse: collapse;">
+      <tr>
+        <th>Tamanho</th>
+        <th>Preco (R$)</th>
+      </tr>
+      <tr><td>P</td><td>83</td></tr>
+      <tr><td>M</td><td>84</td></tr>
+      <tr><td>G</td><td>90</td></tr>
+      <tr><td>GG</td><td>95</td></tr>
+    </table>
+  </div>
+
+  <!-- Dimensões por tamanho -->
+  <div class="info-card">
+    <h3>Dimensoes por Tamanho</h3>
+    <table style="width:100%; text-align:center; border-collapse: collapse;">
+      <tr>
+        <th>Tamanho</th>
+        <th>Altura</th>
+        <th>Largura</th>
+      </tr>
+      <tr><td>P</td><td>72cm</td><td>48cm</td></tr>
+      <tr><td>M</td><td>74cm</td><td>50cm</td></tr>
+      <tr><td>G</td><td>76cm</td><td>52cm</td></tr>
+      <tr><td>GG</td><td>78cm</td><td>54cm</td></tr>
+    </table>
+    <p style="text-align:center; font-size:12px;">*As dimensões podem variar um pouco*</p>
+  </div>
+</section>
+
+<!-- Formulário único de pedido -->
+<div class="form-card" id="formCard" style="display:none;">
+  <h2>Finalize o Pedido</h2>
+  <p id="produtoSelecionado"></p>
+
+  <!-- Inputs do cliente -->
+  <input type="text" id="nome" placeholder="Nome completo" required>
+  <input type="text" id="cpf" placeholder="CPF (123-456-789-00)" required>
+  <input type="text" id="telefone" placeholder="Telefone (com DDD)" required>
+  <input type="text" id="rua" placeholder="Rua">
+  <input type="text" id="numero" placeholder="Número da casa">
+  <input type="text" id="bairro" placeholder="Bairro">
+  <input type="text" id="cidade" placeholder="Cidade">
+  <input type="text" id="estado" placeholder="Estado">
+  <input type="text" id="tipoCasa" placeholder="Tipo de casa">
+  <input type="text" id="referencia" placeholder="Referência (opcional)">
+
+  <!-- Seleção de tamanho e preço -->
+  <label for="tamanho">Escolha o tamanho:</label>
+  <select id="tamanho">
+    <option value="P" data-preco="83">P</option>
+    <option value="M" data-preco="84">M</option>
+    <option value="G" data-preco="90">G</option>
+    <option value="GG" data-preco="95">GG</option>
+  </select>
+  <p style="text-align:center;">Preço: R$ <span id="precoSelecionado">83</span></p>
+
+  <button id="btnPedido">Enviar Pedido</button>
+  <div id="linkPagamento"></div>
+</div>
+
+<footer>
+  <div class="rodape">
+    <p>© 2026 SportBrasil | 
+      <a href="reembolso-devolucao/reembolso-devolucao.html" target="_blank">Reembolso e Devolução</a> | 
+      <a href="https://wa.me/5547991961943" target="_blank"> 
+        <img src="img/tags/whatsapp.png" alt="suporte whatsapp" class="whatsapp-footer"> 
+      </a>
+    </p>
+  </div>
+</footer>
+
+<!-- Scripts -->
+<script src="js/produtos.js"></script>
+<script>
+  // Atualiza preço quando muda o tamanho
+  const tamanhoSelect = document.getElementById("tamanho");
+  const precoSpan = document.getElementById("precoSelecionado");
+
+  tamanhoSelect.addEventListener("change", () => {
+    const preco = tamanhoSelect.selectedOptions[0].dataset.preco;
+    precoSpan.textContent = preco;
+  });
+</script>
+</body>
+</html>
